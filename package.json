@@ -4,7 +4,7 @@
   "description": "Deployment and Development for AI and Data Science Models",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "keywords": [
     "ai",

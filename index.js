@@ -29,22 +29,51 @@ app.post('/visualise', (req, res) => {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
         if (files.csvfile) {
-            fs.rename(files.csvfile.path, path.join(__dirname, './public/uploads/') + files.csvfile.name, function (err) {
+            var oldpath = files.csvfile.path;
+            var newpath = path.join(__dirname, './public/uploads/') + files.csvfile.name;
+            // fs.rename(files.csvfile.path, path.join(__dirname, './public/uploads/') + files.csvfile.name, function (err) {
+            //     if (err) throw err;
+            //     var inputStream = fs.createReadStream(path.join(__dirname, 'public/uploads/') + files.csvfile.name, 'utf8');
+            //     var all_rows = [];
+            //     inputStream
+            //         .pipe(CsvReadableStream({ parseNumbers: true, parseBooleans: true, trim: true }))
+            //         .on('data', function (row) {
+            //             all_rows.push(row);
+            //         })
+            //         .on('end', function (data) {
+            //             var cdata = {
+            //                 headers: all_rows[0],
+            //                 data: all_rows.slice(1, all_rows.length - 1)
+            //             };
+            //             res.send(cdata);
+            //         });
+            // });
+            fs.readFile(oldpath, (err, data) => {
                 if (err) throw err;
-                var inputStream = fs.createReadStream(path.join(__dirname, 'public/uploads/') + files.csvfile.name, 'utf8');
-                var all_rows = [];
-                inputStream
-                    .pipe(CsvReadableStream({ parseNumbers: true, parseBooleans: true, trim: true }))
-                    .on('data', function (row) {
-                        all_rows.push(row);
-                    })
-                    .on('end', function (data) {
-                        var cdata = {
-                            headers: all_rows[0],
-                            data: all_rows.slice(1, all_rows.length - 1)
-                        };
-                        res.send(cdata);
-                    });
+                console.log('File read!');
+                fs.writeFile(newpath, data, function (err) {
+                    if (err) throw err;
+                    var inputStream = fs.createReadStream(newpath, 'utf8');
+                    var all_rows = [];
+                    inputStream
+                        .pipe(CsvReadableStream({ parseNumbers: true, parseBooleans: true, trim: true }))
+                        .on('data', function (row) {
+                            all_rows.push(row);
+                        })
+                        .on('end', function (data) {
+                            var cdata = {
+                                headers: all_rows[0],
+                                data: all_rows.slice(1, all_rows.length - 1)
+                            };
+                            res.send(cdata);
+                        });
+                });
+
+                // Delete the file
+                fs.unlink(oldpath, function (err) {
+                    if (err) throw err;
+                    console.log('File deleted!');
+                });
             });
         }
         else {

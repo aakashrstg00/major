@@ -1,0 +1,28 @@
+{
+  "name": "maas",
+  "version": "1.0.0",
+  "description": "Deployment and Development for AI and Data Science Models",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "keywords": [
+    "ai",
+    "model",
+    "data",
+    "science",
+    "deploy",
+    "train",
+    "test",
+    "run"
+  ],
+  "author": "Aakash Rastogi, Manish Aneja, Manu Singh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "csv-reader": "^1.0.3",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1",
+    "mongoose": "^5.3.1"
+  }
+}

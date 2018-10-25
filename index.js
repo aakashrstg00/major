@@ -36,6 +36,15 @@ app.post('/ml/image-classification/test', (req, res) => {
     });
 });
 
+app.post('/ml/text-prediction/test', (req, res) => {
+
+    var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), JSON.stringify(filePaths)]);
+    res.send({ msg: 'started' });
+    p.on('end', data => {
+        console.log('Ended process');
+    });
+});
+
 app.post('/visualise', (req, res) => {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {

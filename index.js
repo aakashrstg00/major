@@ -14,9 +14,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get('/', (req, res) => {
+app.use(function(req,res){
+    res.header("Access-Control-Allow-Origin", "*");
+});
+app.get('/', (req, res, next) => {
     res.send({ hello: 'hola' });
+    next();
 });
 
 app.post('/ml/image-classification/test', (req, res) => {

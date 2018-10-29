@@ -31,8 +31,8 @@ app.post('/ml/image-classification/test', (req, res) => {
         files.images.forEach(image => {
             filePaths.push(image.path);
         });
-        var p = spawn('python', [path.join(__dirname, '/ml-code/test-imageClassification.py'), JSON.stringify(filePaths)]);
-        res.send({ msg: 'started' });
+        var p = spawn('python', [path.join(__dirname, '/ml-code/test.py'), JSON.stringify(filePaths)]);
+        p.on('start', function(data){res.send({msg:data});});
         p.on('end', data => {
             console.log('Ended process');
         })

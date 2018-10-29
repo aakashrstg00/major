@@ -155,11 +155,11 @@ if args.op == "train":
 
 elif args.op == "test":
     model = load_model('models/model-200.hdf5')
-        v = ""
-        seq = quotes.lower()
-        print(seq)
-        for i in range(8):
-            x=predict_completions(seq, 1)
-            v += x[0] + " "
-            seq=x[0]
-        print(" ",v)
+    v = ""
+    seq = quotes.lower()
+    print(seq)
+    for i in range(8):
+        x=predict_completions(seq, 1)
+        v += x[0] + " "
+        seq=x[0]
+    print(" ",v)

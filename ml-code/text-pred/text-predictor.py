@@ -155,11 +155,13 @@ if args.op == "train":
 
 elif args.op == "test":
     model = load_model('models/model-200.hdf5')
-    v = ""
+    v = []
     seq = quotes.lower()
     print(seq)
-    for i in range(8):
+    for i in range(4):
         x=predict_completions(seq, 1)
-        v += x[0] + " "
+        v.append(x[0])
         seq=x[0]
-    print(" ",v)
+    with open('result.json','w') as jsf:
+        print(v)
+        json.dump({options: v},jsf)

@@ -14,8 +14,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(function(req,res){
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 app.get('/', (req, res, next) => {
     res.send({ hello: 'hola' });
@@ -46,6 +48,10 @@ app.post('/ml/text-prediction/test', (req, res) => {
     p.on('end', data => {
         console.log('Ended process');
     });
+});
+
+app.get('/visualise', (req,res)=>{
+    res.send('Use POST');
 });
 
 app.post('/visualise', (req, res) => {

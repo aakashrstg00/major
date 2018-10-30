@@ -163,5 +163,7 @@ elif args.op == "test":
         v.append(x[0])
         seq=x[0]
     with open('result.json','w') as jsf:
+        data = {}
+        data['options'] = v
         print(v)
-        json.dump({options: v},jsf)
+        json.dump(data,jsf)

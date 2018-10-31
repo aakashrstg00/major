@@ -47,20 +47,18 @@ app.post('/ml/image-classification/test', (req, res) => {
 
 app.post('/ml/text-prediction/test', (req, res) => {
 
-    // var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), 'test',req.body.textdata]);
-    // p.on('start', data =>{
-    //     console.log('Started');
-    // });
-    // p.on('end', data => {
-    //     console.log('Ended process');
-    //     fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
-    //         if (err) throw err;
-    //         console.log(data.toString());
-    //         res.send({'text':'is'});
-    //     })
-    // });
-    var arr = ['the','for','and','that','this','as','or']
-    res.send(arr[Math.ceil(Math.random()*arr.length)]);
+    var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), 'test',req.body.textdata]);
+    p.stdout.on('end', data => {
+        console.log('Ended process');
+        fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
+            if (err) throw err;
+            console.log(data.toString());
+            // res.send({'text':'is'});
+        })
+    });
+
+    // var arr = ['the','for','and','that','this','as','or']
+    // res.send(arr[Math.ceil(Math.random()*arr.length)]);
 });
 
 app.get('/visualise', (req, res) => {

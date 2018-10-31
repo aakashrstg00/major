@@ -23,6 +23,7 @@
     "csv-reader": "^1.0.3",
     "express": "^4.16.3",
     "formidable": "^1.2.1",
-    "mongoose": "^5.3.1"
+    "mongoose": "^5.3.1",
+    "python-shell": "^1.0.6"
   }
 }

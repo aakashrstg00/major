@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var formidable = require('formidable');
 var CsvReadableStream = require('csv-reader');
-const { spawn } = require("child_process");
+const spawn = require("child_process").spawn;
 const app = express();
 
 // mongoose.connect('mongodb://rastogi:rastogi1@ds121343.mlab.com:21343/cloudai');
@@ -47,18 +47,20 @@ app.post('/ml/image-classification/test', (req, res) => {
 
 app.post('/ml/text-prediction/test', (req, res) => {
 
-    var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), 'test',req.body.textdata]);
-    p.on('start', data =>{
-        console.log('Started');
-    });
-    p.on('end', data => {
-        console.log('Ended process');
-        fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
-            if (err) throw err;
-            console.log(data.toString());
-            res.send({'text':'is'});
-        })
-    });
+    // var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), 'test',req.body.textdata]);
+    // p.on('start', data =>{
+    //     console.log('Started');
+    // });
+    // p.on('end', data => {
+    //     console.log('Ended process');
+    //     fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
+    //         if (err) throw err;
+    //         console.log(data.toString());
+    //         res.send({'text':'is'});
+    //     })
+    // });
+    var arr = ['the','for','and','that','this','as','or']
+    res.send(arr[Math.ceil(Math.random()*arr.length)]);
 });
 
 app.get('/visualise', (req, res) => {
@@ -108,3 +110,7 @@ app.set('port', process.env.PORT || 7777);
 app.listen(app.get('port'), () => {
     console.log('Server started at ' + app.get('port'));
 });
+
+
+
+var p = spawn('python', ['./text-predictor.py', 'test','For']);

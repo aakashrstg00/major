@@ -1,14 +1,29 @@
-The topic of blogging seems to come up a lot in our social media training workshops
-The benefits of a quality blog are obvious
-fresh content is good for your readers and your rankings
-Blogs are easy to set up and even easier to update
-We often tell people that if they can use Microsoft they can update a blog
-As easy as they are to set up they can be difficult to maintain
-A good blog is filled with relevant timely content that is updated on a regular basis
-New bloggers often start out with a bang but then fizzle out when they realize that creating content can be challenging
-In my opinion this is one of the best travel blogs out there
-You can tell that time has been put into the creation of each post and it’s always interesting to read
-You might not like this site but you have to admire it from a blogging perspective
-You dont become one of the most popular pop culture websites in the world by accident
-It is really good at hooking the reader with a fun and informative title and then providing all of the information
-Their posts are short and to the point
+in _city_ the best landmarks to visit are _landmark_ and _landmark_
+_landmark_ and _landmark_ are the best places to visit in _city_
+_city_ is famous for the _landmark_
+_landmark_ is very famous in _city_
+_landmark_ is the best place to visit in _country_
+_city_ is the capital of _country_
+_landmark_ is located in _country_
+in _city_ the best landmark to visit is _landmark_
+best place in _country_ is _city_
+_hotel_ is a very good hotel in _city_
+best hotel in _city_ is _hotel_
+_hotel_ is very famous in _city_
+_landmark_ is the best place to visit in _country_
+_landmark_ and _landmark_ are the best places to visit in _city_
+in _city_ the best landmarks to visit are _landmark_ and _landmark_
+_landmark_ and _landmark_ are the best places to visit in _city_
+_city_ is famous for the _landmark_
+_landmark_ is very famous in _city_
+_landmark_ is the best place to visit in _country_
+_city_ is the capital of _country_
+_landmark_ is located in _country_
+in _city_ the best landmark to visit is _landmark_
+best place in _country_ is _city_
+_hotel_ is a very good hotel in _city_
+best hotel in _city_ is _hotel_
+_hotel_ is very famous in _city_
+_landmark_ is the best place to visit in _country_
+_landmark_ and _landmark_ are the best places to visit in _city_
+best place in _country_ is _city_

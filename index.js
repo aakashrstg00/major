@@ -48,7 +48,6 @@ app.post('/ml/image-classification/test', (req, res) => {
 app.post('/ml/text-prediction/test', (req, res) => {
 
     var p = spawn('python', [path.join(__dirname, '/ml-code/text-predictor.py'), 'test',req.body.textdata]);
-    res.send({ msg: 'started' });
     p.on('end', data => {
         console.log('Ended process');
         fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {

@@ -34,9 +34,13 @@ app.post('/ml/image-classification/test', (req, res) => {
             filePaths.push(image.path);
         });
         var p = spawn('python', [path.join(__dirname, '/ml-code/test.py'), JSON.stringify(filePaths)]);
-        p.on('start', function(data){res.send({msg:data});});
+        p.on('start', function (data) { res.send({ msg: data }); });
         p.on('end', data => {
             console.log('Ended process');
+            fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
+                if (err) throw err;
+                console.log(data.toString());
+            })
         })
     });
 });
@@ -47,10 +51,15 @@ app.post('/ml/text-prediction/test', (req, res) => {
     res.send({ msg: 'started' });
     p.on('end', data => {
         console.log('Ended process');
+        console.log('Ended process');
+        fs.readFileSync(path.join(__dirname, 'ml-code/text-pred/result.json'), (err, data) => {
+            if (err) throw err;
+            console.log(data.toString());
+        })
     });
 });
 
-app.get('/visualise', (req,res)=>{
+app.get('/visualise', (req, res) => {
     res.send('Use POST');
 });
 

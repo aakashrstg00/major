@@ -58,8 +58,8 @@ app.post('/ml/text-prediction/test', (req, res) => {
         })
     });
 
-    var arr = ['the','for','and','that','this','as','or']
-    res.send(arr[Math.ceil(Math.random()*arr.length)]);
+    // var arr = ['the','for','and','that','this','as','or']
+    // res.send(arr[Math.ceil(Math.random()*arr.length)]);
 });
 
 app.get('/visualise', (req, res) => {

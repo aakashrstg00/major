@@ -33,9 +33,9 @@ id_to_word = dict({(i,c) for c,i in word_to_id.items()})
 
 tr_data = [word_to_id[word] for word in data if word in word_to_id]
 print(word_to_id)
-EOS_INDEX = word_to_id["_eos_"]
-HOTEL_INDEX = word_to_id["_hotel_"]
-CITY_INDEX = word_to_id["_city_"]
+# EOS_INDEX = word_to_id["_eos_"]
+# HOTEL_INDEX = word_to_id["_hotel_"]
+# CITY_INDEX = word_to_id["_city_"]
 print("vocablury: ",len(word_to_id))
 l = np.split(tr_data,[i for i,x in enumerate(tr_data) if x==EOS_INDEX])
 
